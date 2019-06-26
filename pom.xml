@@ -103,7 +103,7 @@
 						<configuration>
 							<targetFolder>target/generated-sources/java</targetFolder>
 							<packages>
-								<package>com.skcc.mssp.party</package>
+								<package>com.sk.sample</package>
 							</packages>
 						</configuration>
 					</execution>
