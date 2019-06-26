@@ -1,4 +1,4 @@
-package com.sk.sample.mssp.account.application.sp.web;
+package com.sk.sample.mssp.member.application.sp.web;
 
 import java.util.stream.Collectors;
 

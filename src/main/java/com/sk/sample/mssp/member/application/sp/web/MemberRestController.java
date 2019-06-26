@@ -1,4 +1,4 @@
-package com.sk.sample.mssp.account.application.sp.web;
+package com.sk.sample.mssp.member.application.sp.web;
 
 import java.util.List;
 
@@ -15,61 +15,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sk.sample.mssp.account.domain.model.Account;
-import com.sk.sample.mssp.account.domain.service.AccountService;
+import com.sk.sample.mssp.member.domain.model.Member;
+import com.sk.sample.mssp.member.domain.service.MemberService;
 
 @RestController
-@RequestMapping("/v1/accounts")
-public class AccountRestController implements AccountService {
+@RequestMapping("/members")
+public class MemberRestController implements MemberService {
 	@Autowired
-	private AccountService accountService;
+	private MemberService memberService;
 
 	@Override
 	@GetMapping
-	public List<Account> findAll() {
-		return accountService.findAll(); 
+	public List<Member> findAll() {
+		return memberService.findAll(); 
 	}
 	
 	@Override
 	@GetMapping("/{id}")
-	public Account findById(@PathVariable("id") Long id) {
-		return accountService.findById(id);
+	public Member findById(@PathVariable("id") Long id) {
+		return memberService.findById(id);
 	}
 
 	@Override
 	@PostMapping
-	public Account register(@RequestBody Account account) {
-		return accountService.register(account);
+	public Member register(@RequestBody Member member) {
+		return memberService.register(member);
 	}
 
 	@Override
 	@PutMapping("/{id}")
-	public Account update(@PathVariable("id") Long id, @RequestBody Account account) {
-		return accountService.update(id, account);
+	public Member update(@PathVariable("id") Long id, @RequestBody Member member) {
+		return memberService.update(id, member);
 	}
 
 	@Override
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		accountService.delete(id);
+		memberService.delete(id);
 	}
 	
 	@Override
 	@GetMapping("/search/name")
-	public List<Account> findByNameLike(@RequestParam("name") String name) {
-		return accountService.findByNameLike(name);
+	public List<Member> findByNameLike(@RequestParam("name") String name) {
+		return memberService.findByNameLike(name);
 	}
 
 	@Override
 	@GetMapping("/search/email")
-	public Account findByEmail(@RequestParam("email") String email) {
-		return accountService.findByEmail(email);
+	public Member findByEmail(@RequestParam("email") String email) {
+		return memberService.findByEmail(email);
 	}
 
 	@Override
 	//@GetMapping
-	public Page<Account> findAll(Pageable pageable) {
-		return accountService.findAll(pageable); 
+	public Page<Member> findAll(Pageable pageable) {
+		return memberService.findAll(pageable); 
 	}
 
 

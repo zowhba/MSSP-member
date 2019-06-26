@@ -1,4 +1,3 @@
 com\sk\sample\mssp\shared\base\QAbstractEntity.class
-com\sk\sample\mssp\shared\domain\Address$AddressBuilder.class
-com\sk\sample\mssp\account\domain\model\QAccount.class
+com\sk\sample\mssp\member\domain\model\QMember.class
 com\sk\sample\mssp\shared\domain\QAddress.class
