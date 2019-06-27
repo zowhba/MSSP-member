@@ -16,6 +16,8 @@ public interface MemberRepository extends PagingAndSortingRepository<Member, Lon
                                            QueryDslPredicateExecutor<Member> {
 	
 	Member findByEmail(@Param("email") String email);
+	Member findByUserId(@Param("userId") String userId);
+	
 	List<Member> findByNameLike(@Param("name") String name);
 	List<Member> findAll();
 	

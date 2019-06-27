@@ -65,7 +65,13 @@ public class MemberRestController implements MemberService {
 	public Member findByEmail(@RequestParam("email") String email) {
 		return memberService.findByEmail(email);
 	}
-
+	
+	@Override
+	@GetMapping("/search/userId")
+	public Member findByUserId(@RequestParam("userId") String userId) {
+		return memberService.findByUserId(userId);
+	}
+	
 	@Override
 	//@GetMapping
 	public Page<Member> findAll(Pageable pageable) {
