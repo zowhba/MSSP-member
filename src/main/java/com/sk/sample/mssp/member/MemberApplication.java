@@ -15,6 +15,8 @@ import com.sk.sample.mssp.member.domain.model.MemberType;
 import com.sk.sample.mssp.member.domain.repository.MemberRepository;
 import com.sk.sample.mssp.shared.domain.Address;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @SpringBootApplication
 public class MemberApplication {
 	public static void main(String[] args) {
@@ -27,23 +29,26 @@ public class MemberApplication {
 			insertMembers(memberRepository);
 			displayMembers(memberRepository);
 			
-			executeExample1(memberRepository);
 		};
 	}
 		
 	public void insertMembers(MemberRepository memberRepository) {
 		
-		Member account1 = new Member("id123","1234","hong@sk.com", "홍길동", "01012345678");
-		memberRepository.save(account1);
+		Member member1 = new Member("id123","1234","hong@sk.com", "홍길동", "01012345678");
+		member1.setAddress(new Address(12345, "서울시 강남구"));
+		memberRepository.save(member1);
 		
-		Member account2 = new Member("kang","5678","kang@sk.com", "강호동", "01011114444");
-		memberRepository.save(account2);
+		Member member2 = new Member("kang","5678","kang@sk.com", "강호동", "01011114444");
+		member2.setAddress(new Address(54321, "경기도 성남시"));
+		memberRepository.save(member2);
 		
-		Member account3 = new Member("yu","12345","yu@gmail.com", "유재석", "01022334589");
-		memberRepository.save(account3);
+		Member member3 = new Member("yu","12345","yu@gmail.com", "유재석", "01022334589");
+		member3.setAddress(new Address(01112, "경기도 이천시"));
+		memberRepository.save(member3);
 		
-		Member account4 = new Member("shin","0000","shin@sk.com", "신동엽", "01098765432");
-		memberRepository.save(account4);
+		Member member4 = new Member("shin","0000","shin@sk.com", "신동엽", "01098765432");
+		member4.setAddress(new Address(98765, "인천시 남동구"));
+		memberRepository.save(member4);
 	}
 	
 	public void displayMembers(MemberRepository memberRepository) {
@@ -57,15 +62,5 @@ public class MemberApplication {
 		System.out.println("***************************************************************");
 	}
 	
-	
-	public void executeExample1(MemberRepository memberRepository) {
-		Member member = memberRepository.findByEmail("hong@sk.com");
-		
-//		account.setAddress(Address.builder().zipCode(10000).homeAddress("경기도 성남시").build());
-//		accountRepository.save(account);
-//		
-		displayMembers(memberRepository);
-	}
-		
 	
 }

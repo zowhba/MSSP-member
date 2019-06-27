@@ -18,19 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sk.sample.mssp.member.domain.model.Member;
 import com.sk.sample.mssp.member.domain.service.MemberService;
 
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
+
 @RestController
 @RequestMapping("/members")
 public class MemberRestController implements MemberService {
 	@Autowired
 	private MemberService memberService;
-
+	
 	@Override
 	@GetMapping
+	@ApiOperation(value="전체 회원 조회")
 	public List<Member> findAll() {
 		return memberService.findAll(); 
 	}
 	
 	@Override
+	@ApiIgnore
 	@GetMapping("/{id}")
 	public Member findById(@PathVariable("id") Long id) {
 		return memberService.findById(id);
@@ -38,29 +43,34 @@ public class MemberRestController implements MemberService {
 
 	@Override
 	@PostMapping
+	@ApiOperation(value="회원가입")
 	public Member register(@RequestBody Member member) {
 		return memberService.register(member);
 	}
 
 	@Override
+	@ApiIgnore
 	@PutMapping("/{id}")
 	public Member update(@PathVariable("id") Long id, @RequestBody Member member) {
 		return memberService.update(id, member);
 	}
 
 	@Override
+	@ApiIgnore
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
 		memberService.delete(id);
 	}
 	
 	@Override
+	@ApiIgnore
 	@GetMapping("/search/name")
 	public List<Member> findByNameLike(@RequestParam("name") String name) {
 		return memberService.findByNameLike(name);
 	}
 
 	@Override
+	@ApiIgnore
 	@GetMapping("/search/email")
 	public Member findByEmail(@RequestParam("email") String email) {
 		return memberService.findByEmail(email);
@@ -71,7 +81,7 @@ public class MemberRestController implements MemberService {
 	public Member findByUserId(@RequestParam("userId") String userId) {
 		return memberService.findByUserId(userId);
 	}
-	
+
 	@Override
 	//@GetMapping
 	public Page<Member> findAll(Pageable pageable) {
