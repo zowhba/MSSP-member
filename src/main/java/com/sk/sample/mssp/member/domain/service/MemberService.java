@@ -14,6 +14,7 @@ public interface MemberService {
 	
 	List<Member> findByNameLike(String name);
 	Member findByEmail(String email);
+	Member findByUserId(String userId);
 	
 	Member register(Member member);
 	Member update(Long id, Member member);

@@ -37,6 +37,14 @@ public class MemberLogic implements MemberService {
 	
 	@Override
 	@Transactional(readOnly=true)
+	public Member findByUserId(String userId) {
+		return memberRepository.findByUserId(userId);
+	}
+	
+
+	
+	@Override
+	@Transactional(readOnly=true)
 	public List<Member> findAll() {
 		return memberRepository.findAll();
 	}

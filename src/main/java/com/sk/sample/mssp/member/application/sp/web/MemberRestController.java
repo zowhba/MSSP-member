@@ -3,6 +3,7 @@ package com.sk.sample.mssp.member.application.sp.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sk.sample.mssp.member.domain.model.Member;
 import com.sk.sample.mssp.member.domain.service.MemberService;
 
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
+
 @RestController
 @RequestMapping("/members")
 public class MemberRestController implements MemberService {
@@ -26,11 +30,13 @@ public class MemberRestController implements MemberService {
 
 	@Override
 	@GetMapping
+	@ApiOperation(value="전체 회원 조회")
 	public List<Member> findAll() {
 		return memberService.findAll(); 
 	}
 	
 	@Override
+	@ApiIgnore
 	@GetMapping("/{id}")
 	public Member findById(@PathVariable("id") Long id) {
 		return memberService.findById(id);
@@ -38,32 +44,44 @@ public class MemberRestController implements MemberService {
 
 	@Override
 	@PostMapping
+	@ApiOperation(value="회원가입")
 	public Member register(@RequestBody Member member) {
 		return memberService.register(member);
 	}
 
 	@Override
+	@ApiIgnore
 	@PutMapping("/{id}")
 	public Member update(@PathVariable("id") Long id, @RequestBody Member member) {
 		return memberService.update(id, member);
 	}
 
 	@Override
+	@ApiIgnore
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
 		memberService.delete(id);
 	}
 	
 	@Override
+	@ApiIgnore
 	@GetMapping("/search/name")
 	public List<Member> findByNameLike(@RequestParam("name") String name) {
 		return memberService.findByNameLike(name);
 	}
 
 	@Override
+	@ApiIgnore
 	@GetMapping("/search/email")
 	public Member findByEmail(@RequestParam("email") String email) {
 		return memberService.findByEmail(email);
+	}
+	
+	@Override
+	@ApiOperation(value="회원 정보 조회")
+	@GetMapping("/userId")
+	public Member findByUserId(@RequestParam("userId") String userId) {
+		return memberService.findByUserId(userId);
 	}
 
 	@Override
