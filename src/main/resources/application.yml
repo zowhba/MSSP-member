@@ -6,7 +6,7 @@ spring:
     active: 
     - default
   application:
-    name: zipkin-demo-server1
+    name: MSSP-member-01
   zipkin:
     baseUrl: http://13.124.235.101:9411/
   sleuth:
